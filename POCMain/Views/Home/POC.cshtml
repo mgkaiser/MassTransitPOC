@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+<div class="row">
+    <input id="txtLastName" type="text" value="Kaiser" />
+</div>
+<div class="row">
+    <input id="txtFirstName" type="text" value="Michael" />
+</div>
+<div class="row">
+    <input id="btnDoAThing" type="button" value="Publish an event" />  
+</div>
+<div class="row">
+    <input id="btnDoAThing2" type="button" value="Send and Response" />
+</div>
+<div class="row">
+    <input id="btnDoAThing3" type="button" value="Send a CAM Event" />
+</div>
+<div class="row">
+    <input id="btnDoAThing4" type="button" value="Send a TXP Event" />
+</div>
+
+<script type="text/javascript">
+    $('#btnDoAThing').click(function () {
+
+        var lastName = $('#txtLastName').val();
+        var firstName = $('#txtFirstName').val();
+
+        var model = {
+            LastName: lastName,
+            FirstName: firstName
+        }
+
+        $.ajax({
+            url: "/Home/DoAThing",  
+            type: "POST",
+            data: JSON.stringify(model),
+            dataType: "json",
+            traditional: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.status == "Success") {
+                    // alert("Done");
+                } else {
+                    alert("Action didn't return success.");
+                }
+            },
+            error: function () {
+                alert("An error has occured!!!");
+            }
+        });
+    });
+    $('#btnDoAThing2').click(function () {
+        $.ajax({
+            url: "/Home/DoAThing2",
+            type: "POST",            
+            dataType: "json",
+            traditional: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.status == "Success") {
+                    // alert("Done");
+                } else {
+                    alert("Action returned " + data.status);
+                }
+            },
+            error: function () {
+                alert("An error has occured!!!");
+            }
+        });
+    });
+    $('#btnDoAThing3').click(function () {
+        $.ajax({
+            url: "/Home/DoAThing3",
+            type: "POST",          
+            dataType: "json",
+            traditional: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.status == "Success") {
+                    // alert("Done");
+                } else {
+                    alert("Action returned " + data.status);
+                }
+            },
+            error: function () {
+                alert("An error has occured!!!");
+            }
+        });
+    });
+    $('#btnDoAThing4').click(function () {
+        $.ajax({
+            url: "/Home/DoAThing4",
+            type: "POST",
+            dataType: "json",
+            traditional: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.status == "Success") {
+                    // alert("Done");
+                } else {
+                    alert("Action returned " + data.status);
+                }
+            },
+            error: function () {
+                alert("An error has occured!!!");
+            }
+        });
+    });
+</script>
