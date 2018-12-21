@@ -9,11 +9,13 @@ namespace POCTestConsumer.Consumers
 {
     public class EGTEventConsumer : IConsumer<IEGTEvent>
     {
+        private const string TxpTransactionComplete = "TXP.Transaction.Complete";
+
         public async Task Consume(ConsumeContext<IEGTEvent> context)
         {
-            await Task.Delay(10);         
+            await Task.Delay(1);         
             Console.WriteLine($"{context.Message.SenderId}, {context.Message.EventType}");
-            throw new Exception();
+            if (bool.Parse(context.Message.Message)) throw new Exception();            
         }
     }
 }

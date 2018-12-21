@@ -45,27 +45,28 @@ namespace POCMain.Controllers
 
         public async Task<JsonResult> DoAThing([FromBody] POCViewModel model)
         {
-            await Program.Bus.Publish<IPOCEvent>(new { model.LastName, model.FirstName });
-            
+            var tasks = Enumerable.Range(0, model.Count).Select(i => Program.Bus.Publish<IPOCEvent>(new { LastName = model.LastName, FirstName = model.FirstName, Fail = model.Fail.ToString() }));
+            await Task.WhenAll(tasks);
             return new JsonResult(new { status = "Success" });
         }
 
-        public async Task<JsonResult> DoAThing2()
-        {
-            var response = await Program.PocEvent2Client.Request<IPOCEvent2Request, IPOCEvent2Response>(new { eventId = 123 });
-            return new JsonResult(new { status = response.Response });
+        public async Task<JsonResult> DoAThing2([FromBody] POCViewModel model)
+        {            
+            var tasks = Enumerable.Range(0, model.Count).Select(i => Program.PocEvent2Client.Request<IPOCEvent2Request, IPOCEvent2Response>(new { eventId = 123, fail = model.Fail.ToString() }));
+            var response = await Task.WhenAll(tasks);
+            return new JsonResult(new { status = response.First().Response });
         }
 
-        public async Task<JsonResult> DoAThing3()
-        {
-            await Program.Bus.Publish<IEGTEvent>(new { SenderId = "Serve.CAM.Events", EventType = "CAM.Customer.Created", Message="TooCool!" });
-
+        public async Task<JsonResult> DoAThing3([FromBody] POCViewModel model)
+        {            
+            var tasks = Enumerable.Range(0, model.Count).Select(i => Program.Bus.Publish<IEGTEvent>(new { SenderId = "Serve.CAM.Events", EventType = "CAM.Customer.Created", Message = model.Fail.ToString() }));
+            await Task.WhenAll(tasks);
             return new JsonResult(new { status = "Success" });
         }
-        public async Task<JsonResult> DoAThing4()
+        public async Task<JsonResult> DoAThing4([FromBody] POCViewModel model)
         {
-            await Program.Bus.Publish<IEGTEvent>(new { SenderId = "Serve.TXP.Events", EventType = "TXP.Transaction.Complete", Message = "TooCool!" });
-
+            var tasks = Enumerable.Range(0, model.Count).Select(i => Program.Bus.Publish<IEGTEvent>(new { SenderId = "Serve.TXP.Events", EventType = "TXP.Transaction.Complete", Message = model.Fail.ToString() }));
+            await Task.WhenAll(tasks);
             return new JsonResult(new { status = "Success" });
         }
 

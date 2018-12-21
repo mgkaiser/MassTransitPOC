@@ -9,5 +9,7 @@ namespace POCMain.Models
     {
         public string LastName { get; set; }
         public string FirstName { get; set; }
+        public int Count { get; set; }
+        public bool Fail { get; set; }
     }
 }

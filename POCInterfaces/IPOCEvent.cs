@@ -8,5 +8,6 @@ namespace POCInterfaces
     {
         string LastName { get; set; }
         string FirstName { get; set; }
+        bool Fail { get; set; }
     }
 }

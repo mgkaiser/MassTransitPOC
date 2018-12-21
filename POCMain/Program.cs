@@ -29,7 +29,7 @@ namespace POCMain
             _busControl = ConfigureBus();
             _busControl.Start();
 
-            PocEvent2Client = new MessageRequestClient<IPOCEvent2Request, IPOCEvent2Response>(Bus, new Uri("rabbitmq://192.168.0.12/POCEventConsumer_queue"), TimeSpan.FromSeconds(30));
+            PocEvent2Client = new MessageRequestClient<IPOCEvent2Request, IPOCEvent2Response>(Bus, new Uri("rabbitmq://192.168.99.100/POCEventConsumer_queue"), TimeSpan.FromSeconds(30));
 
             CreateWebHostBuilder(args).Build().Run();
 
@@ -44,7 +44,7 @@ namespace POCMain
         {
             return MassTransit.Bus.Factory.CreateUsingRabbitMq(cfg =>
             {
-                var host = cfg.Host(new Uri("rabbitmq://192.168.0.12"), h =>
+                var host = cfg.Host(new Uri("rabbitmq://192.168.99.100"), h =>
                 {
                     h.Username("mkaiser");
                     h.Password("mgk070294");

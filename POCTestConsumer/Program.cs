@@ -31,7 +31,7 @@ namespace POCTestConsumer
         {
             return MassTransit.Bus.Factory.CreateUsingRabbitMq(cfg =>
             {
-                var host = cfg.Host(new Uri("rabbitmq://192.168.0.12"), h =>
+                var host = cfg.Host(new Uri("rabbitmq://192.168.99.100"), h =>
                 {
                     h.Username("mkaiser");
                     h.Password("mgk070294");
@@ -41,8 +41,12 @@ namespace POCTestConsumer
                 
                 cfg.ReceiveEndpoint(host, "POCEventConsumer_queue", x =>
                 {
-                    x.Consumer<POCEventConsumer>();
-                    x.Consumer<POCEvent2Consumer>();
+                    x.Consumer<POCEventConsumer>(consumer => {
+                        consumer.Message<IPOCEvent>(msg => msg.UseScheduledRedelivery(Retry.Incremental(10, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5))));
+                    });
+                    x.Consumer<POCEvent2Consumer>(consumer => {
+                        consumer.Message<IPOCEvent2Request>(msg => msg.UseScheduledRedelivery(Retry.Incremental(10, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5))));
+                    });
                 });
 
                 cfg.ReceiveEndpoint(host, "POCEventConsumer_CAM_queue", x =>
@@ -57,10 +61,10 @@ namespace POCTestConsumer
                     {
                         config.ExchangeType = ExchangeType.Direct;
                         config.RoutingKey = "Serve.CAM.Events:CAM.Card.Created";
+                    });                   
+                    x.Consumer<EGTEventConsumer>(consumer => {
+                        consumer.Message<IEGTEvent>(msg => msg.UseScheduledRedelivery(Retry.Incremental(10, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5))));
                     });
-                    //x.UseRetry(retryConfig => retryConfig.Exponential(10, TimeSpan.FromMinutes(10), TimeSpan.FromMinutes(100), TimeSpan.FromMinutes(10)));
-                    x.UseRetry(retryConfig => retryConfig.Incremental(10, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5)));
-                    x.Consumer<EGTEventConsumer>();
                     
                 });
 
@@ -71,9 +75,10 @@ namespace POCTestConsumer
                     {
                         config.ExchangeType = ExchangeType.Direct;
                         config.RoutingKey = "Serve.TXP.Events:TXP.Transaction.Complete";
+                    });                    
+                    x.Consumer<EGTEventConsumer>(consumer => {
+                        consumer.Message<IEGTEvent>(msg => msg.UseScheduledRedelivery(Retry.Incremental(10, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5))));
                     });
-                    x.UseRetry(retryConfig => retryConfig.Incremental(10, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5)));
-                    x.Consumer<EGTEventConsumer>();                   
                 });
 
             });

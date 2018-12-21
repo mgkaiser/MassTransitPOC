@@ -13,6 +13,7 @@ namespace POCTestConsumer.Consumers
         {
             await Task.Delay(10);
             Console.WriteLine($"{context.Message.LastName}, {context.Message.FirstName}");
+            if (context.Message.Fail) throw new Exception();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace POCTestConsumer.Consumers
         {
             Console.WriteLine($"{context.Message.eventId}");
             await context.RespondAsync<IPOCEvent2Response>(new { Response = "Success" });
+            if (context.Message.fail) throw new Exception();
         }
     }
 }

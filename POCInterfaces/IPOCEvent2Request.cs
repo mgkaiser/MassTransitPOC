@@ -7,5 +7,6 @@ namespace POCInterfaces
     public interface IPOCEvent2Request
     {
         int eventId { get; set; }
+        bool fail { get; set; }
     }
 }

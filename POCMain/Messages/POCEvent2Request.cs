@@ -9,5 +9,6 @@ namespace POCMain.Messages
     public class POCEvent2Request : IPOCEvent2Request
     {
         public int eventId { get; set; }
+        public bool fail { get; set; }
     }
 }
