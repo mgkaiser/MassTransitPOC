@@ -5,9 +5,11 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POCMain", "POCMain\POCMain.csproj", "{37E6A5A6-4BDB-426E-81DD-E3A205B8A328}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POCInterfaces", "POCInterfaces\POCInterfaces.csproj", "{8CE2477A-D620-4856-B18B-6BEB8080BD6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POCInterfaces", "POCInterfaces\POCInterfaces.csproj", "{8CE2477A-D620-4856-B18B-6BEB8080BD6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POCTestConsumer", "POCTestConsumer\POCTestConsumer.csproj", "{0947FCA2-457F-4EDB-9551-95B57BC477BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POCTestConsumer", "POCTestConsumer\POCTestConsumer.csproj", "{0947FCA2-457F-4EDB-9551-95B57BC477BD}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{948C3D2C-CA43-4359-A4CC-6D9953952356}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{0947FCA2-457F-4EDB-9551-95B57BC477BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0947FCA2-457F-4EDB-9551-95B57BC477BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0947FCA2-457F-4EDB-9551-95B57BC477BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{948C3D2C-CA43-4359-A4CC-6D9953952356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{948C3D2C-CA43-4359-A4CC-6D9953952356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{948C3D2C-CA43-4359-A4CC-6D9953952356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{948C3D2C-CA43-4359-A4CC-6D9953952356}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
