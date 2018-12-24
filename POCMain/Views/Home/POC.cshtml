@@ -30,6 +30,9 @@
     <div class="col-lg-1">
         <input id="chkFail2" type="checkbox" />
     </div>
+    <div class="col-lg-2">
+        <input id="txtResponse2" type="text" value="" />
+    </div>
 </div>
 <div class="row">
     <div class="col-lg-2">
@@ -56,16 +59,16 @@
 
 <script type="text/javascript">
     $('#btnDoAThing').click(function () {
-        DoAThing("/Home/DoAThing", JSON.stringify(GetModel("1")));
+        DoAThing("/Home/DoAThing", JSON.stringify(GetModel("1")),"1");
     });
     $('#btnDoAThing2').click(function () {
-        DoAThing("/Home/DoAThing2", JSON.stringify(GetModel("2")));    
+        DoAThing("/Home/DoAThing2", JSON.stringify(GetModel("2")), "2");            
     });
     $('#btnDoAThing3').click(function () {
-        DoAThing("/Home/DoAThing3", JSON.stringify(GetModel("3")));
+        DoAThing("/Home/DoAThing3", JSON.stringify(GetModel("3")), "3");
     });
     $('#btnDoAThing4').click(function () {
-        DoAThing("/Home/DoAThing4", JSON.stringify(GetModel("4")));
+        DoAThing("/Home/DoAThing4", JSON.stringify(GetModel("4")), "4");
     });
 
     function GetModel(id) {
@@ -82,7 +85,7 @@
         }
     }
 
-    function DoAThing(url, model) {
+    function DoAThing(url, model, id) {
         $.ajax({
             url: url,
             type: "POST",
@@ -90,12 +93,8 @@
             data: model,
             traditional: true,
             contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                if (data.status == "Success") {
-                    // alert("Done");
-                } else {
-                    alert("Action returned " + data.status);
-                }
+            success: function (data) {               
+                $('#txtResponse' + id).val(data.status);
             },
             error: function () {
                 alert("An error has occured!!!");
