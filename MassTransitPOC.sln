@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POCInterfaces", "POCInterfa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POCTestConsumer", "POCTestConsumer\POCTestConsumer.csproj", "{0947FCA2-457F-4EDB-9551-95B57BC477BD}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{948C3D2C-CA43-4359-A4CC-6D9953952356}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{0947FCA2-457F-4EDB-9551-95B57BC477BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0947FCA2-457F-4EDB-9551-95B57BC477BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0947FCA2-457F-4EDB-9551-95B57BC477BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{948C3D2C-CA43-4359-A4CC-6D9953952356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{948C3D2C-CA43-4359-A4CC-6D9953952356}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{948C3D2C-CA43-4359-A4CC-6D9953952356}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{948C3D2C-CA43-4359-A4CC-6D9953952356}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   poctestconsumer:
-    image: ${DOCKER_REGISTRY-}poctestconsumer
+    image: mgkaiser/poctestconsumer
     build:
       context: .
       dockerfile: POCTestConsumer/Dockerfile
