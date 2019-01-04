@@ -46,8 +46,8 @@ namespace POCMain
             {
                 var host = cfg.Host(new Uri("rabbitmq://192.168.3.110"), h =>
                 {
-                    h.Username("mkaiser");
-                    h.Password("mgk070294");
+                    h.Username("guest");
+                    h.Password("guest");
                 });
 
                 cfg.Send<IEGTEvent>(x => {
