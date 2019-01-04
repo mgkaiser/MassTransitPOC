@@ -11,9 +11,11 @@ namespace POCTestConsumer.Consumers
     {
         public async Task Consume(ConsumeContext<IPOCEvent2Request> context)
         {
-            Console.WriteLine($"{context.Message.eventId}");
-            await context.RespondAsync<IPOCEvent2Response>(new { Response = "Success" });
-            if (context.Message.fail) throw new Exception();
+            var random = new Random(DateTime.Now.Millisecond);
+            var resultId = random.Next(1, 1000);
+
+            Console.WriteLine($"{context.Message.eventId} {resultId}");
+            await context.RespondAsync<IPOCEvent2Response>(new { Response = context.Message.fail ? "Fail" : "Success", ResultId = resultId});           
         }
     }
 }

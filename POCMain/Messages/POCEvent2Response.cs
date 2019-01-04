@@ -9,5 +9,6 @@ namespace POCMain.Messages
     public class POCEvent2Response : IPOCEvent2Response
     {
         public string Response { get; set; }
+        public int ResultId { get; set; }
     }
 }
