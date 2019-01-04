@@ -4,6 +4,7 @@ using POCTestConsumer.Consumers;
 using RabbitMQ.Client;
 using System;
 using GreenPipes;
+using System.Threading;
 
 namespace POCTestConsumer
 {
@@ -22,7 +23,7 @@ namespace POCTestConsumer
             _busControl.Start();    
 
             Console.WriteLine("POCTestConsumer starting...");
-            Console.ReadLine();
+            Thread.Sleep(Timeout.Infinite);
 
             _busControl.Stop(TimeSpan.FromSeconds(10));
         }

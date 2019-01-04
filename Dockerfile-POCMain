@@ -5,8 +5,8 @@ EXPOSE 443
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY POCMain/POCMain.csproj POCMain/
-COPY POCInterfaces/POCInterfaces.csproj POCInterfaces/
+COPY ./POCMain/POCMain.csproj POCMain/
+COPY ./POCInterfaces/POCInterfaces.csproj POCInterfaces/
 RUN dotnet restore POCMain/POCMain.csproj
 COPY . .
 WORKDIR /src/POCMain

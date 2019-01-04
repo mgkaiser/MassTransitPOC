@@ -3,8 +3,8 @@ WORKDIR /app
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY POCTestConsumer/POCTestConsumer.csproj POCTestConsumer/
-COPY POCInterfaces/POCInterfaces.csproj POCInterfaces/
+COPY ./POCTestConsumer/POCTestConsumer.csproj POCTestConsumer/
+COPY ./POCInterfaces/POCInterfaces.csproj POCInterfaces/
 RUN dotnet restore POCTestConsumer/POCTestConsumer.csproj
 COPY . .
 WORKDIR /src/POCTestConsumer
