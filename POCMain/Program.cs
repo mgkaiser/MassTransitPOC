@@ -44,7 +44,7 @@ namespace POCMain
         {
             return MassTransit.Bus.Factory.CreateUsingRabbitMq(cfg =>
             {
-                var host = cfg.Host(new Uri("rabbitmq://192.168.99.100"), h =>
+                var host = cfg.Host(new Uri("rabbitmq://192.168.3.110"), h =>
                 {
                     h.Username("mkaiser");
                     h.Password("mgk070294");
