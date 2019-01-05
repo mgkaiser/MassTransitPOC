@@ -1,9 +1,0 @@
-/home/mgkaiser/source/MassTransitPOC/POCInterfaces/bin/Debug/netcoreapp2.1/POCInterfaces.deps.json
-/home/mgkaiser/source/MassTransitPOC/POCInterfaces/bin/Debug/netcoreapp2.1/POCInterfaces.dll
-/home/mgkaiser/source/MassTransitPOC/POCInterfaces/bin/Debug/netcoreapp2.1/POCInterfaces.pdb
-/home/mgkaiser/source/MassTransitPOC/POCInterfaces/obj/Debug/netcoreapp2.1/POCInterfaces.csprojAssemblyReference.cache
-/home/mgkaiser/source/MassTransitPOC/POCInterfaces/obj/Debug/netcoreapp2.1/POCInterfaces.csproj.CoreCompileInputs.cache
-/home/mgkaiser/source/MassTransitPOC/POCInterfaces/obj/Debug/netcoreapp2.1/POCInterfaces.AssemblyInfoInputs.cache
-/home/mgkaiser/source/MassTransitPOC/POCInterfaces/obj/Debug/netcoreapp2.1/POCInterfaces.AssemblyInfo.cs
-/home/mgkaiser/source/MassTransitPOC/POCInterfaces/obj/Debug/netcoreapp2.1/POCInterfaces.dll
-/home/mgkaiser/source/MassTransitPOC/POCInterfaces/obj/Debug/netcoreapp2.1/POCInterfaces.pdb

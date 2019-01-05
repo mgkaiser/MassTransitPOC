@@ -1,4 +1,32 @@
-POCInterfaces/obj/Debug/netcoreapp2.1/POCInterfaces.assets.cache
-POCMain/obj/Debug/netcoreapp2.1/POCMain.assets.cache
-POCMain/obj/Debug/netcoreapp2.1/POCMain.csprojAssemblyReference.cache
-POCTestConsumer/obj/Debug/netcoreapp2.1/POCTestConsumer.csprojAssemblyReference.cache
+*.swp
+*.*~
+project.lock.json
+.DS_Store
+*.pyc
+
+# Visual Studio Code
+.vscode
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Visual Studio 2015
+.vs/
