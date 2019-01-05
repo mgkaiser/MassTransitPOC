@@ -5,11 +5,15 @@ using RabbitMQ.Client;
 using System;
 using GreenPipes;
 using System.Threading;
+using System.Runtime.Loader;
 
 namespace POCTestConsumer
 {
     class Program
     {
+        private static ManualResetEvent _Shutdown = new ManualResetEvent(false);
+        private static ManualResetEventSlim _Complete = new ManualResetEventSlim();
+
         private static IBusControl _busControl;
 
         public static IBus Bus
@@ -17,15 +21,46 @@ namespace POCTestConsumer
             get { return _busControl; }
         }
 
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
-            _busControl = ConfigureBus();
-            _busControl.Start();    
+            try
+            {
+                var ended = new ManualResetEventSlim();
+                var starting = new ManualResetEventSlim();
 
-            Console.WriteLine("POCTestConsumer starting...");
-            Thread.Sleep(Timeout.Infinite);
+                AssemblyLoadContext.Default.Unloading += Default_Unloading;
 
-            _busControl.Stop(TimeSpan.FromSeconds(10));
+                Console.WriteLine("POCTestConsumer starting service bus ...");
+                _busControl = ConfigureBus();
+                _busControl.Start();    
+
+                Console.WriteLine("POCTestConsumer starting...");
+                
+                // Wait for a singnal
+                _Shutdown.WaitOne();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("POCTestConsumer shutting down service bus ...");
+                _busControl.Stop(TimeSpan.FromSeconds(10));
+            }
+
+            Console.WriteLine("POCTestConsumer ending...");
+            _Complete.Set();
+ 
+            return 0;
+            
+        }
+
+         private static void Default_Unloading(AssemblyLoadContext obj)
+        {
+            Console.WriteLine($"POCTestConsumer received SIGTERM...");
+            _Shutdown.Set();
+            _Complete.Wait();
         }
 
         private static IBusControl ConfigureBus()
