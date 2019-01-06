@@ -24,11 +24,12 @@ x64/
 x86/
 build/
 bld/
-[Bb]in/
-[Oo]bj/
+POCInterfaces/[Bb]in/
+POCInterfaces/[Oo]bj/
 msbuild.log
 msbuild.err
 msbuild.wrn
 
 # Visual Studio 2015
 .vs/
+
