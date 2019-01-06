@@ -13,6 +13,7 @@ project.lock.json
 *.userosscache
 *.sln.docstates
 *.cache
+*.assets.cache  
 
 # Build results
 [Dd]ebug/
