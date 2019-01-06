@@ -26,6 +26,10 @@ build/
 bld/
 POCInterfaces/[Bb]in/
 POCInterfaces/[Oo]bj/
+POCMain/[Bb]in/
+POCMain/[Oo]bj/
+POCTestConsumer/[Bb]in/
+POCTestConsumer/[Oo]bj/
 msbuild.log
 msbuild.err
 msbuild.wrn
